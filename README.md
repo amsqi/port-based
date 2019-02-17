@@ -8,7 +8,7 @@ For details and explanations of the terminology used below and in the notebooks,
 
 * `det_PBT_std.ipynb`: Compute the entanglement fidelity for the deterministic standard protocol in local dimension `d` and `N` ports.
 
-* `prob_PBT_epr.ipynb`: Compute the success probability for the probabilistic EPR protocol in local dimension `d` and `N` ports.
+* `prob_PBT_EPR.ipynb`: Compute the success probability for the probabilistic EPR protocol in local dimension `d` and `N` ports.
 
 ## Usage
 
