@@ -1,4 +1,4 @@
-# port-based [![arXiv](https://img.shields.io/badge/arXiv-1809.10751-blue.svg?style=flat)(https://arxiv.org/abs/1809.10751)
+# port-based [![arXiv](https://img.shields.io/badge/arXiv-1809.10751-blue.svg?style=flat)](https://arxiv.org/abs/1809.10751)
 
 Jupyter notebooks to calculate the entanglement fidelity and success probability of certain port-based teleportation protocols.
 
@@ -6,13 +6,9 @@ For details and explanations of the terminology used below and in the notebooks,
 
 ## Files
 
-* `det_PBT_std.ipynb`
+* `det_PBT_std.ipynb`: Notebook to compute the entanglement fidelity for the determinstic standard protocol in dimension `d`.
 
-Notebook to compute the entanglement fidelity for the determinstic standard protocol in dimension `d`.
-
-* `prob_PBT_epr.ipynb`
-
-Notebook to compute the success probability for the probabilistic EPR protocol in dimension `d`.
+* `prob_PBT_epr.ipynb`: Notebook to compute the success probability for the probabilistic EPR protocol in dimension `d`.
 
 ## Usage
 
