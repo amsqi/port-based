@@ -6,13 +6,13 @@ For details and explanations of the terminology used below and in the notebooks,
 
 ## Files
 
-* `det_PBT_std.ipynb`: Notebook to compute the entanglement fidelity for the determinstic standard protocol in dimension `d`.
+* `det_PBT_std.ipynb`: Compute the entanglement fidelity for the deterministic standard protocol in local dimension `d` and `N` ports.
 
-* `prob_PBT_epr.ipynb`: Notebook to compute the success probability for the probabilistic EPR protocol in dimension `d`.
+* `prob_PBT_epr.ipynb`: Compute the success probability for the probabilistic EPR protocol in local dimension `d` and `N` ports.
 
 ## Usage
 
-To run the notebooks, you need a working Jupyter installation with the SageMath system enabled. To install these, we highly recommend using the [anaconda](https://www.anaconda.com/) or [miniconda](https://docs.conda.io/en/latest/miniconda.html) environments. Once you have a working conda environment installed on your system, follow [these directions](https://doc.sagemath.org/html/en/installation/conda.html) to install SageMath.
+To run the notebooks, you need a working Jupyter installation with the SageMath system enabled. To install these, we highly recommend using the [anaconda](https://www.anaconda.com/distribution/) or [miniconda](https://docs.conda.io/en/latest/miniconda.html) environments. Once you have a working conda environment installed on your system, follow [these directions](https://doc.sagemath.org/html/en/installation/conda.html) to install SageMath.
 
 ## Contributors
 
