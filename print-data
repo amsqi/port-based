@@ -1,0 +1,23 @@
+#!/usr/bin/env sage
+from __future__ import print_function, division
+import argparse
+from pbt import *
+import argparse
+
+parser = argparse.ArgumentParser(
+    description="Print data for the EPR protocol for probabilistic PBT."
+)
+parser.add_argument("what", choices=["det-std", "prob-epr"])
+parser.add_argument("d", metavar="D", type=int, help="dimension of ports")
+parser.add_argument("N_min", metavar="MIN", type=int, help="minimal number of ports")
+parser.add_argument("N_max", metavar="MAX", type=int, help="maximal number of ports")
+parser.add_argument(
+    "--N-step",
+    metavar="STEP",
+    default=10,
+    type=int,
+    help="step size by which to increase number of ports",
+)
+args = parser.parse_args()
+what = print_det_std if args.what == "det-std" else print_prob_epr
+what(args.d, args.N_min, args.N_max, args.N_step)
