@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 import numpy as np
-from sage.all import StandardTableaux, SemistandardTableaux, Partitions, sqrt
+from sage.all import StandardTableaux, SemistandardTableaux, Partitions
+from math import sqrt
 import sys
 
 __all__ = [
@@ -18,15 +19,28 @@ __all__ = [
 ]
 
 
-### Preliminaries ###
+### Preliminaries (XXX: use lru_cache) ###
+def memoize(f):
+    memo = {}
+
+    def g(*args):
+        if args not in memo:
+            memo[args] = f(*args)
+        return memo[args]
+
+    return g
+
+
+@memoize
 def specht(mu):
     """Dimension of Specht module [mu]. Denoted d_mu in [CLM+18]."""
-    return StandardTableaux(mu).cardinality()
+    return long(StandardTableaux(mu).cardinality())
 
 
+@memoize
 def weyl(d, mu):
     """Dimension of Weyl module V_mu^d. Denoted m_{d,mu} in [CLM+18]."""
-    return SemistandardTableaux(shape=mu, max_entry=d).cardinality()
+    return long(SemistandardTableaux(shape=mu, max_entry=d).cardinality())
 
 
 def box_added(alpha, d):
@@ -40,7 +54,7 @@ def box_added(alpha, d):
 def F_std(d, N):
     """Exact formula for the entanglement fidelity from [SSMH17]. Denoted F^std_d(N) in [CLM+18]."""
     return d ** (-N - 2) * sum(
-        sum(sqrt(specht(mu) * weyl(d, mu)).n() for mu in box_added(alpha, d)) ** 2
+        sum(sqrt(specht(mu) * weyl(d, mu)) for mu in box_added(alpha, d)) ** 2
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
@@ -57,7 +71,7 @@ def p_EPR(d, N):
     We use the formula derived in the proof of Theorem 1.3 of [CLM+18].
     """
     return d ** -N * sum(
-        (weyl(d, alpha) * specht(alpha) * N / (alpha[0] + d)).n()
+        (weyl(d, alpha) * specht(alpha) * N / (long(alpha[0]) + d))
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
