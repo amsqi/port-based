@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 
-### Preliminaries (XXX: use lru_cache) ###
+### Preliminaries ###
 def memoize(f):
     memo = {}
 
@@ -31,13 +31,11 @@ def memoize(f):
     return g
 
 
-@memoize
 def specht(mu):
     """Dimension of Specht module [mu]. Denoted d_mu in [CLM+18]."""
     return long(StandardTableaux(mu).cardinality())
 
 
-@memoize
 def weyl(d, mu):
     """Dimension of Weyl module V_mu^d. Denoted m_{d,mu} in [CLM+18]."""
     return long(SemistandardTableaux(shape=mu, max_entry=d).cardinality())
@@ -53,8 +51,11 @@ def box_added(alpha, d):
 ### Deterministic PBT ###
 def F_std(d, N):
     """Exact formula for the entanglement fidelity from [SSMH17]. Denoted F^std_d(N) in [CLM+18]."""
+    # memoize specht() and weyl() results (but only for current call)
+    specht_mem, weyl_mem = memoize(specht), memoize(weyl)
+
     return d ** (-N - 2) * sum(
-        sum(sqrt(specht(mu) * weyl(d, mu)) for mu in box_added(alpha, d)) ** 2
+        sum(sqrt(specht_mem(mu) * weyl_mem(d, mu)) for mu in box_added(alpha, d)) ** 2
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
