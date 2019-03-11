@@ -8,7 +8,6 @@ __all__ = [
     "F_std",
     "F_std_coeff",
     "p_EPR",
-    "p_EPR_coeff_estimate",
     "print_det_std",
     "print_prob_epr",
     "specht",
@@ -90,10 +89,6 @@ def GUE0_lambda_max_estimate(d, num_samples):
     This function estimates the coefficient c.
     """
     return np.mean([GUE0_lambda_max(d) for _ in range(num_samples)])
-
-
-def p_EPR_coeff_estimate(d, num_samples):
-    return GUE0_lambda_max_estimate(d, num_samples) * np.sqrt(d)
 
 
 ### Pretty Printing ###
