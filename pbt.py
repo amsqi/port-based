@@ -32,12 +32,12 @@ def memoize(f):
 
 def specht(mu):
     """Dimension of Specht module [mu]. Denoted d_mu in [CLM+18]."""
-    return long(StandardTableaux(mu).cardinality())
+    return StandardTableaux(mu).cardinality().n()
 
 
 def weyl(d, mu):
     """Dimension of Weyl module V_mu^d. Denoted m_{d,mu} in [CLM+18]."""
-    return long(SemistandardTableaux(shape=mu, max_entry=d).cardinality())
+    return SemistandardTableaux(shape=mu, max_entry=d).cardinality().n()
 
 
 def box_added(alpha, d):
@@ -71,7 +71,7 @@ def p_EPR(d, N):
     We use the formula derived in the proof of Theorem 1.3 of [CLM+18].
     """
     return d ** -N * sum(
-        (weyl(d, alpha) * specht(alpha) * N / (long(alpha[0]) + d))
+        (weyl(d, alpha) * specht(alpha) * N / (alpha[0] + d))
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
