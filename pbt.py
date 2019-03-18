@@ -53,8 +53,9 @@ def F_std(d, N):
     # memoize specht() and weyl() results (but only for current call)
     specht_mem, weyl_mem = memoize(specht), memoize(weyl)
 
-    return d ** (-N - 2) * sum(
-        sum(sqrt(specht_mem(mu) * weyl_mem(d, mu)) for mu in box_added(alpha, d)) ** 2
+    return sum(
+        d ** (-N - 2)
+        * sum(sqrt(specht_mem(mu) * weyl_mem(d, mu)) for mu in box_added(alpha, d)) ** 2
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
@@ -70,8 +71,8 @@ def p_EPR(d, N):
     Exact expression for the success probability from [SSMH17]. Denoted p^EPR_d(N) in [CLM+18].
     We use the formula derived in the proof of Theorem 1.3 of [CLM+18].
     """
-    return d ** -N * sum(
-        (weyl(d, alpha) * specht(alpha) * N / (alpha[0] + d))
+    return sum(
+        d ** -N * (weyl(d, alpha) * specht(alpha) * N) / (alpha[0] + d)
         for alpha in Partitions(n=N - 1, max_length=d)
     )
 
