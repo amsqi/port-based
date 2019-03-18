@@ -95,6 +95,7 @@ def GUE0_lambda_max_estimate(d, num_samples):
 ### Pretty Printing ###
 def print_det_std(d, N_min, N_max, N_step=10):
     print("N F O")
+    sys.stdout.flush()
     for N in range(N_min, N_max + 1, N_step):
         F = F_std(d, N)
         O = N * (1 - F)
@@ -104,6 +105,7 @@ def print_det_std(d, N_min, N_max, N_step=10):
 
 def print_prob_epr(d, N_min, N_max, N_step=10):
     print("N p FO")
+    sys.stdout.flush()
     for N in range(N_min, N_max + 1, N_step):
         p = p_EPR(d, N)
         FO = np.sqrt((N - 1) / d) * (1 - p)
