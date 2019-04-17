@@ -15,4 +15,4 @@ data-prob:
 	./print-data prob-epr 2 10 500 > out/pbt-prob-epr-d2.txt
 	./print-data prob-epr 3 10 500 > out/pbt-prob-epr-d3.txt
 	./print-data prob-epr 4 10 500 > out/pbt-prob-epr-d4.txt
-	./print-data prob-epr 5 10 500 > out/pbt-prob-epr-d5.txt
+	./print-data prob-epr 5 10 450 > out/pbt-prob-epr-d5.txt
